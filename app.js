@@ -34,6 +34,7 @@ const homeController = require('./controllers/home');
 const userController = require('./controllers/user');
 const apiController = require('./controllers/api');
 const contactController = require('./controllers/contact');
+const searchController = require('./controllers/search');
 
 /**
  * API keys and Passport configuration.
@@ -85,6 +86,21 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
+var csrfMiddleware = lusca.csrf();
+app.use(function(req, res, next) {
+    // Paths that start with /foo don't need CSRF
+    if (/^\/foo/.test(req.originalUrl)) {
+        next();
+    } else {
+        csrfMiddleware(req, res, next);
+    }
+});
+
+//app.use(lusca.csp({ /* ... */}));
+//app.use(lusca.xframe('SAMEORIGIN'));
+//app.use(lusca.p3p('ABCDEF'));
+//app.use(lusca.hsts({ maxAge: 31536000 }));
+//app.use(lusca.xssProtection(true));
 app.use((req, res, next) => {
   if (req.path === '/api/upload') {
     next();
@@ -134,6 +150,8 @@ app.post('/account/profile', passportConfig.isAuthenticated, userController.post
 app.post('/account/password', passportConfig.isAuthenticated, userController.postUpdatePassword);
 app.post('/account/delete', passportConfig.isAuthenticated, userController.postDeleteAccount);
 app.get('/account/unlink/:provider', passportConfig.isAuthenticated, userController.getOauthUnlink);
+app.post('/search', homeController.postSearch);
+app.get('/search', searchController.getSearch);
 
 /**
  * API examples routes.

@@ -1,0 +1,3 @@
+{"_id":{"$oid":"590fefe306a276c83c58f16f"},"roomNums":[101.0,102.0,103.0,104.0],"roomType":"twin","beds":["single","double"],"numPeople":2.0}
+{"_id":{"$oid":"59192b2ab45cd90ec72bdb84"},"roomNums":[201.0,202.0,203.0,204.0],"roomType":"single","beds":["single"],"numPeople":1.0}
+{"_id":{"$oid":"59192b6eb45cd90ec72bdb85"},"roomNums":[301.0,302.0,303.0,304.0],"roomType":"family","beds":["single","double"],"numPeople":5.0}

@@ -1,0 +1,19 @@
+extends layout
+
+block content
+  h1 Search Results
+
+  table.table
+    tr
+      th Room type
+      th Number of People
+      th Beds
+    each room in Rooms
+      tr
+        td #{room.roomType}
+        td #{room.numPeople}
+        td #{room.beds}
+        td
+          button.btn.btn-primary.book-room(onClick='')
+            i.fa.fa-user
+            | Book
