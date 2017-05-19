@@ -1,0 +1,24 @@
+extends layout
+
+block content
+  h1 
+    a(href="/room/"+room.roomId)
+      | #{room.roomName}
+
+  table.table
+    tr
+      th Room type
+      th Number of People
+      th Beds
+      th Number of Rooms left
+      th Actions
+    tr
+      td #{room.roomType}
+      td #{room.numPeople}
+      td #{room.beds}
+      td #{room.availableNumber}
+      td
+        a.button.btn.btn-primary.book-room(onClick='do_book(#{room.roomId})')
+          i.fa.fa-user
+          | Book
+

@@ -5,15 +5,25 @@ block content
 
   table.table
     tr
+      th Room
       th Room type
       th Number of People
       th Beds
+      th Number of Rooms left
+      th Actions
     each room in Rooms
       tr
+        td 
+          a(href="/room/"+room.roomId)
+            | #{room.roomName}
         td #{room.roomType}
         td #{room.numPeople}
         td #{room.beds}
+        td #{room.availableNumber}
         td
-          button.btn.btn-primary.book-room(onClick='')
+          a.button.btn.btn-primary.book-room(onClick='do_book(#{room.roomId})')
             i.fa.fa-user
             | Book
+          a.button.btn.btn-primary.book-room(href="/room/"+room.roomId)
+            i.fa.fa-user
+            | Details

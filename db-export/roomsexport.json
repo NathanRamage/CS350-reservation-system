@@ -1,3 +1,24 @@
-{"_id":{"$oid":"590fefe306a276c83c58f16f"},"roomNums":[101.0,102.0,103.0,104.0],"roomType":"twin","beds":["single","double"],"numPeople":2.0}
-{"_id":{"$oid":"59192b2ab45cd90ec72bdb84"},"roomNums":[201.0,202.0,203.0,204.0],"roomType":"single","beds":["single"],"numPeople":1.0}
-{"_id":{"$oid":"59192b6eb45cd90ec72bdb85"},"roomNums":[301.0,302.0,303.0,304.0],"roomType":"family","beds":["single","double"],"numPeople":5.0}
+{"_id":{"$oid":"590fefe306a276c83c58f16f"},
+	"roomId":"twin-room-swing-a",
+	"roomName": "Twin room with balcony - Swing A",
+	"totalNumber":10,
+	"availableNumber":4,
+	"roomType":"twin",
+	"beds":["single","double"],
+	"numPeople":2.0}
+{"_id":{"$oid":"59192b2ab45cd90ec72bdb84"},
+	"roomId":"single-room-with-luxury-bathtub",
+	"roomName": "Single room with luxury bathtub",
+	"totalNumber":20,
+	"availableNumber":10,
+	"roomType":"single",
+	"beds":["single"],
+	"numPeople":1.0}
+{"_id":{"$oid":"59192b6eb45cd90ec72bdb85"},
+	"roomId":"family-room-3-beds-2-bathrooms",
+	"roomName": "Family Room with 3 beds and 2 bathrooms",
+	"totalNumber":5,
+	"availableNumber":2,
+	"roomType":"family",
+	"beds":["single","double"],
+	"numPeople":5.0}

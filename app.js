@@ -35,6 +35,7 @@ const userController = require('./controllers/user');
 const apiController = require('./controllers/api');
 const contactController = require('./controllers/contact');
 const searchController = require('./controllers/search');
+const roomController = require('./controllers/room');
 
 /**
  * API keys and Passport configuration.
@@ -151,6 +152,8 @@ app.post('/account/password', passportConfig.isAuthenticated, userController.pos
 app.post('/account/delete', passportConfig.isAuthenticated, userController.postDeleteAccount);
 app.get('/account/unlink/:provider', passportConfig.isAuthenticated, userController.getOauthUnlink);
 app.get('/search', searchController.getSearch);
+app.get('/room/:roomId', roomController.getRoom);
+
 
 /**
  * API examples routes.
