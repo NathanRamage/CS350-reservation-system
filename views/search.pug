@@ -1,7 +1,7 @@
 extends layout
 
 block content
-  h1 Search Results
+  h1 Room available with your search
 
   table.table
     tr
@@ -9,7 +9,6 @@ block content
       th Room type
       th Number of People
       th Beds
-      th Number of Rooms left
       th Actions
     each room in Rooms
       tr
@@ -19,7 +18,6 @@ block content
         td #{room.roomType}
         td #{room.numPeople}
         td #{room.beds}
-        td #{room.availableNumber}
         td
           a.button.btn.btn-primary.book-room(onClick='do_book(#{room.roomId})')
             i.fa.fa-user

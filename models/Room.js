@@ -3,12 +3,11 @@ const mongoose = require('mongoose');
 const roomSchema = new mongoose.Schema({
   roomId: String,
   roomName: String,
-  totalNumber: Number,
-  availableNumber: Number,
   roomType: String,
   numPeople: Number,
   beds: Array,
-  previewImageUrl: String
+  previewImageUrl: String,
+  reservedPeriods: Array //array of {startDate: .., endDate: ..}
 });
 
 const Room = mongoose.model('Room', roomSchema);

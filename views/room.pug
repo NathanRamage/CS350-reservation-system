@@ -1,24 +1,22 @@
 extends layout
 
 block content
-  h1 
-    a(href="/room/"+room.roomId)
-      | #{room.roomName}
-
-  table.table
-    tr
-      th Room type
-      th Number of People
-      th Beds
-      th Number of Rooms left
-      th Actions
-    tr
-      td #{room.roomType}
-      td #{room.numPeople}
-      td #{room.beds}
-      td #{room.availableNumber}
-      td
-        a.button.btn.btn-primary.book-room(onClick='do_book(#{room.roomId})')
+  .col-sm-6
+    h1 
+      a(href="/room/"+room.roomId)
+        | #{room.roomName}
+      h3
+        b="One of best room for you"
+    hr
+    p="Room type: "+room.roomType
+    p="Number of People: "+room.numPeople
+    p="Bed types: "+room.beds
+    a.button.btn.btn-primary.book-room(href='/room/'+room.roomId+'/booking')
           i.fa.fa-user
-          | Book
+          | Book it now!
+
+  .col-sm-4
+    img(src=previewImageUrl style="max-width: 400px")
+
+
 

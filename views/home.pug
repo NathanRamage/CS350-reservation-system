@@ -9,20 +9,27 @@ block content
       div(class="col-sm-offset-2 col-sm-10")
         h1="Find the best room for you with our service"
 
-    .row
-      // search form
-      form.form-horizontal(method='GET', action='/search', id='searchForm')
-          .form-group
-            .col-sm-offset-1.col-sm-3
-              input.bigform.col-sm-12.form-control(type='number', name='NoOfPeople', placeholder="Number of guests")
-            .col-sm-4
-              select#roomType.bigform.col-sm-12.input.form-control(form='searchForm', name='roomtype')
-                option(value='all') -- Type of room --
-                option(value='single') Single
-                option(value='twin') Twin
-                option(value='family') Family
-            .col-sm-3
-              button.bigform.col-sm-12.btn.btn-primary(type='submit')
-                i.fa.fa-user
-                | Search
+    
+    // search form
+    form.form-horizontal(method='GET', action='/search', id='searchForm')
+      .row
+        .form-group
+          .col-sm-offset-1.col-sm-3
+            input.bigform.col-sm-12.form-control(type='number', name='NoOfPeople', placeholder="Number of guests")
+          .col-sm-4
+            select#roomType.bigform.col-sm-12.input.form-control(form='searchForm', name='roomtype')
+              option(value='all') -- Type of room --
+              option(value='single') Single
+              option(value='twin') Twin
+              option(value='family') Family
+          .col-sm-3
+            button.bigform.col-sm-12.btn.btn-primary(type='submit')
+              i.fa.fa-user
+              | Search
+      .row
+        .form-group
+          .col-sm-offset-1.col-sm-4
+            input.bigform.col-sm-12.form-control(type='text', name='startDate', placeholder="Start Date", onfocus="(this.type='date')")
+          .col-sm-4
+            input.bigform.col-sm-12.form-control(type='text', name='endDate', placeholder="Start Date", onfocus="(this.type='date')")
             

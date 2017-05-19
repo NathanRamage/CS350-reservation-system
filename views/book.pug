@@ -1,0 +1,31 @@
+extends layout
+
+block content
+  .col-sm-6
+    h1 
+      a(href="/room/"+room.roomId)
+        | #{room.roomName}
+      h3
+        b="Reservating this room"
+    hr
+    p="Room type: "+room.roomType
+    p="Number of People: "+room.numPeople
+    p="Bed types: "+room.beds
+    form.form-horizontal(method='GET', action='/reservation', id='reservation')
+      div(class="row" style="margin-top:40px")
+        .col-sm-offset-1.col-sm-4
+          input.col-sm-12.form-control(type='text', name='startDate', placeholder="Start Date", onfocus="(this.type='date')")
+        .col-sm-4
+          input.col-sm-12.form-control(type='text', name='endDate', placeholder="End Date", onfocus="(this.type='date')")
+        input(type="hidden" name="roomId" value=room.roomId)
+      div(class="row" style="margin-top:20px")
+        .col-sm-offset-1.col-sm-4
+              button.col-sm-12.btn.btn-primary(type='submit')
+                i.fa.fa-user
+                | Reserve this room
+
+  .col-sm-4
+    img(src=previewImageUrl style="max-width: 400px")
+
+
+
