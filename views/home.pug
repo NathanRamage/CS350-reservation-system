@@ -1,25 +1,28 @@
 extends layout
 
 block content
-  h1 Search
-  p Search for rooms
 
-  // search form
-  form.form-horizontal(method='POST', action='/search', name='searchForm')
-      input(type='hidden', name='_csrf', value=_csrf)
-      .form-group
-        label.col-sm-3.control-label(for="NoOfPeople") Number of guests
-        .col-xs-1
-          input.form-control(type='number', name='NoOfPeople')
-        label.col-sm-3.control-label(for="roomType") Room Type
-        .col-sm-3
-          select#roomType.input.form-control(form='searchForm', name='roomType')
-            option(value='0') -- Select --
-            option(value='1') Single
-            option(value='2') Twin
-            option(value='3') Family
-      .form-group
-        .col-sm-offset-7.col-sm-7
-          button.col-sm-3.btn.btn-primary(type='submit')
-            i.fa.fa-user
-            | Search
+  //Background
+
+  div(class="room-search-container")
+    div(class="row" style="margin-bottom: 200px")
+      div(class="col-sm-offset-2 col-sm-10")
+        h1="Find the best room for you with our service"
+
+    .row
+      // search form
+      form.form-horizontal(method='GET', action='/search', id='searchForm')
+          .form-group
+            .col-sm-offset-1.col-sm-3
+              input.bigform.col-sm-12.form-control(type='number', name='NoOfPeople', placeholder="Number of guests")
+            .col-sm-4
+              select#roomType.bigform.col-sm-12.input.form-control(form='searchForm', name='roomtype')
+                option(value='all') -- Type of room --
+                option(value='single') Single
+                option(value='twin') Twin
+                option(value='family') Family
+            .col-sm-3
+              button.bigform.col-sm-12.btn.btn-primary(type='submit')
+                i.fa.fa-user
+                | Search
+            
