@@ -1,0 +1,20 @@
+extends layout
+
+block content
+  h1 Room available for your search
+  .container
+    each room in Rooms
+      .row.search-result-item(href="/room/"+room.roomId)
+        .col-xs-4(style="margin-top:10px; margin-bottom:10px")
+          a(href="/room/"+room.roomId)
+            img(src=previewImageUrl, style="width: 100%")
+        .col-xs-8
+          .row(style="margin-top:5px; font-size: 15px")
+            a(href="/room/"+room.roomId)
+              b=room.roomName
+          .row.search-info(style="margin-top:3px")
+            b="Room type: "
+            | #{room.roomType}
+          .row.search-info
+            b="Types of bed available: "
+            | #{room.beds}

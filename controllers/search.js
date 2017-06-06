@@ -1,6 +1,7 @@
 const async = require('async');
 const mongoose = require('mongoose');
 const Room = require('../models/Room');
+var MobileDetect = require('mobile-detect');
 
 var roomFilterByDate = function(rooms, startDate, endDate, callback){
 	startDate = startDate?startDate:0;
@@ -28,6 +29,7 @@ var roomFilterByDate = function(rooms, startDate, endDate, callback){
 }
 
 exports.getSearch = (req, res) => {
+	mobileInfo = new MobileDetect(req.headers['user-agent'])
 	var roomType = req.param('roomtype');
 	if (roomType == "all") {
 		roomType = "";
@@ -37,12 +39,15 @@ exports.getSearch = (req, res) => {
 
 	Room.find({roomType:roomType}, (err, rooms) => {
 		roomFilterByDate(rooms, startDate, endDate, function(rooms){
-			res.render('search', 
+			templateName = mobileInfo.mobile()?"mobile_search":"search"
+			console.log(startDate)
+			res.render(templateName, 
 				{
 					Rooms: rooms,
 					title: 'Search',
-					startDate: startDate?Date.toISOString(startDate).substring(0,10):null,
-					endDate: startDate?Date.toISOString(startDate).substring(0,10):null
+					startDate: startDate?startDate.toString().substring(0,10):null,
+					endDate: startDate?startDate.toString().substring(0,10):null,
+					previewImageUrl: "/sample.jpg"
 				}
 			);
 		});

@@ -1,0 +1,37 @@
+extends mobile_layout
+
+block content
+
+  //Background
+
+  div(class="room-search-container container")
+    div(class="row" style="margin-bottom: 20px")
+      div(class="col-xs-12 ")
+        h1(style="text-align: center;")="Find the best room for you with our service"
+
+    
+    // search form
+    form.form-horizontal(method='GET', action='/search', id='searchForm').container
+      .row
+        .form-group
+          .col-xs-6
+            input.col-xs-12.col-xs-12.form-control(type='number', name='NoOfPeople', placeholder="Number of guests")
+          .col-xs-6
+            select#roomType.col-xs-12.input.form-control(form='searchForm', name='roomtype')
+              option(value='all') -- Type of room --
+              option(value='single') Single
+              option(value='twin') Twin
+              option(value='family') Family
+      .row
+        .form-group
+          .col-xs-6
+            input.col-xs-12.form-control(type='text', name='startDate', placeholder="Start Date", onfocus="(this.type='date')")
+          .col-xs-6
+            input.col-xs-12.form-control(type='text', name='endDate', placeholder="End Date", onfocus="(this.type='date')")
+      .row
+        .form-group
+          .col-xs-offset-2.col-xs-8
+            button.col-xs-12.btn.btn-primary(type='submit')
+              i.fa-user
+              | Search
+            

@@ -1,0 +1,22 @@
+extends layout
+
+block content
+  row
+    img(src=previewImageUrl style="width: 100%")
+  .col-xs-12
+    h1 
+      a(href="/room/"+room.roomId)
+        | #{room.roomName}
+      h3
+        b="One of best room for you"
+    hr
+    p="Room type: "+room.roomType
+    p="Number of People: "+room.numPeople
+    p="Bed types: "+room.beds
+    a.button.btn.btn-primary.book-room(href='/room/'+room.roomId+'/booking')
+          i.fa.fa-user
+          | Book it now!
+
+
+
+

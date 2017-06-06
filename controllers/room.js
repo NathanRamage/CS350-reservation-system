@@ -1,12 +1,15 @@
 const mongoose = require('mongoose');
 const Room = require('../models/Room');
 const Reservation = require('../models/Reservation');
+var MobileDetect = require('mobile-detect');
 
 
 exports.getRoom = (req, res) => {
+	mobileInfo = new MobileDetect(req.headers['user-agent'])
 	var roomId = req.param('roomId') || "";
 	Room.findOne({roomId:roomId}, (err, room) => {
-		res.render('room', 
+		templateName = mobileInfo.mobile()?"mobile_room":"room"
+		res.render(templateName, 
 			{
 				room: room,
 				title: room.roomName + "Bluewhale Hotel Reservation",
@@ -17,9 +20,11 @@ exports.getRoom = (req, res) => {
 };
 
 exports.bookRoom = (req, res) => {
+	mobileInfo = new MobileDetect(req.headers['user-agent']);
 	var roomId = req.param('roomId') || "";
 	Room.findOne({roomId:roomId}, (err, room) => {
-		res.render('book', 
+		templateName = mobileInfo.mobile()?"mobile_book":"book";
+		res.render(templateName, 
 			{
 				room: room,
 				title: room.roomName + "Bluewhale Hotel Reservation",
