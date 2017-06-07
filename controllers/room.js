@@ -61,3 +61,35 @@ exports.reservationAPI = (req, res) => {
 	}
 
 };
+
+exports.cancelReservationAPI =  (req, res) => {
+	var reservationId = req.param('reservationId') || "";
+
+	if (!req.user) {
+		req.flash('errors', { msg: 'Cancel failed. Please login first' });
+      	res.redirect('/login');
+	}
+
+	//Hard-coded to be always success.
+	if (true) {
+		Reservation.findById(reservationId, (err, reservation) => {
+			if (err) {
+				req.flash('errors', { msg: 'Cancel failed. No reservation is cancelled' });
+      			res.redirect('/booking-history');
+			} else {
+				reservation.remove(function(err){
+					if (err) {
+						req.flash('errors', { msg: 'Cancel failed. No reservation is cancelled' });
+		      			res.redirect('/booking-history');
+					} else {
+						req.flash('success', { msg: 'Cancelation successful' });
+						res.redirect('/booking-history');
+					}
+				});
+			}
+		});
+	} else {
+		// do smth when fail
+	}
+
+};

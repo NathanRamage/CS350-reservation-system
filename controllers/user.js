@@ -3,6 +3,32 @@ const crypto = bluebird.promisifyAll(require('crypto'));
 const nodemailer = require('nodemailer');
 const passport = require('passport');
 const User = require('../models/User');
+const Reservation = require('../models/Reservation');
+var MobileDetect = require('mobile-detect');
+
+
+/**
+ * Booking history
+ */
+exports.history = (req, res) => {
+  mobileInfo = new MobileDetect(req.headers['user-agent']);
+  if (!req.user) {
+    return res.redirect('/account/login');
+  }
+  User.findById(req.user.id, (err, user) => {
+    if (err) { return next(err); }
+    Reservation.find({userId:user.id}, function(err, reservations){
+      templateName = mobileInfo.mobile()?"mobile_history":"history";
+      today = Date.now()
+      res.render(templateName, {
+        title: 'Reservation History',
+        reservations: reservations,
+        today: today,
+        previewImageUrl: "/sample.jpg"
+      });
+    });
+  });
+};
 
 /**
  * GET /login

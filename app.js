@@ -156,6 +156,9 @@ app.get('/search', searchController.getSearch);
 app.get('/room/:roomId', roomController.getRoom);
 app.get('/room/:roomId/booking', roomController.bookRoom);
 app.get('/reservation', roomController.reservationAPI);
+app.get('/booking-history', userController.history);
+app.get('/cancel/:reservationId', roomController.cancelReservationAPI);
+
 
 
 /**

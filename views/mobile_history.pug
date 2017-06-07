@@ -1,0 +1,30 @@
+extends layout
+
+block content
+  h1 Reservations made by you
+
+  .container
+    each reservation in reservations
+      .row.search-result-item
+        .col-xs-4(style="margin-top:10px; margin-bottom:10px")
+          a(href="/room/"+reservation.roomId)
+            img(src=previewImageUrl, style="width: 100%")
+        .col-xs-8
+          .row(style="margin-top:5px; font-size: 15px")
+            a(href="/room/"+reservation.roomId)
+              b=reservation.roomId
+          .row.search-info(style="margin-top:3px")
+            b="Start Date: "
+            | #{reservation.startDate.toString().substring(0,15)}
+          .row.search-info
+            b="End Date: "
+            | #{reservation.endDate.toString().substring(0,15)}
+          .row.search-info
+            if today < reservation.startDate
+              a.button.btn.btn-primary.book-room(href='/cancel/'+reservation.id)
+                i.fa.fa-user
+                | Cancel Reservation
+            else
+              a.button.btn.btn-primary.book-room(href='/room/'+reservation.roomId)
+                i.fa.fa-user
+                | Write Review

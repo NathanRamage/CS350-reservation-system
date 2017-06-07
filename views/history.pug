@@ -1,0 +1,29 @@
+extends layout
+
+block content
+  h1 Reservations made by you
+
+  table.table
+    tr
+      th Room
+      th From
+      th To
+      th Actions
+    each reservation in reservations
+      tr
+        td 
+          a(href="/room/"+reservation.roomId)
+            | #{reservation.roomId}
+        td #{reservation.startDate.toString().substring(0,15)}
+        td #{reservation.endDate.toString().substring(0,15)}
+        td
+          if today < reservation.startDate
+            a.button.btn.btn-primary.book-room(href='/cancel/'+reservation.id)
+              i.fa.fa-user
+              | Cancel Reservation
+          else
+            a.button.btn.btn-primary.book-room(href='/room/'+reservation.roomId)
+              i.fa.fa-user
+              | Write Review
+
+
