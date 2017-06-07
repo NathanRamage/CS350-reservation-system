@@ -17,6 +17,8 @@
           a(href='/contact') Contact
         li
           a(href='/status') Status
+        li(class=(title == 'History') ? 'active' : undefined)
+          a(href='/booking-history') Your Reservations 
       ul.nav.navbar-nav.navbar-right
         if !user
           li(class=(title == 'Login') ? 'active' : undefined)
